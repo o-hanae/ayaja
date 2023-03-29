@@ -6,21 +6,24 @@
 #include <unistd.h>
 
 /**
- * struct sp - Struct print_t
- * @sp: The specifier
- * @f: The function associated
+ * struct a - this structure is going to give us the format
+ * @c: the character that is going to give us the respective function
+ * @p: function pointer with va_list argument
  */
-typedef struct sp
+typedef struct a
 {
-	char *sp;
-	int (*f)(va_list);
-} print_t;
+	char c;
+	int (*p)(va_list list, char *s, int *index);
+} choose;
 
-int print_chr(va_list);
-int print_percent(va_list);
-int print_str(va_list);
-int (*get_sp_func(const char *format))(va_list);
 int _printf(const char *format, ...);
-
+int _putchar(char c);
+void buffer(char *s, char x, int *index);
+/*1-printf.c*/
+int print_c(va_list a, char *s, int *index);
+int print_s(va_list a, char *s, int *index);
+int print_por(va_list a, char *s, int *index);
+int print_id(va_list a, char *s, int *index);
+int print_bin(va_list a, char *s, int *index);
 
 #endif
