@@ -1,22 +1,26 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _MAIN_H_
+#define _MAIN_H_
+
 #include <stdarg.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 
-#define UNUSED(x) (void)(x)
-#define BUFF_SIZE 1024
+/**
+ * struct sp - Struct print_t
+ * @sp: The specifier
+ * @f: The function associated
+ */
+typedef struct sp
+{
+	char *sp;
+	int (*f)(va_list);
+} print_t;
 
-/* FLAGS */
-#define F_MINUS 1
-#define F_PLUS 2
-#define F_ZERO 4
-#define F_HASH 8
-#define F_SPACE 16
-
-/* SIZES */
-#define S_LONG 2
-#define S_SHORT 1
-
+int print_chr(va_list);
+int print_percent(va_list);
+int print_str(va_list);
+int (*get_sp_func(const char *format))(va_list);
 int _printf(const char *format, ...);
+
+
 #endif
