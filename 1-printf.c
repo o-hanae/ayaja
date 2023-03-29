@@ -37,3 +37,14 @@ int print_str(va_list args)
 	return (count);
 
 }
+/**
+ * print_percent - Prints a percent sign to stdout
+ * @args: list arguments
+ * Return: The number of characters printed
+ */
+int print_percent(va_list args)
+{
+	(void) args;
+	write(1, "%",  1);
+	return (1);
+}
